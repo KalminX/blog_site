@@ -15,11 +15,12 @@ def post_share(request, post_id):
             cd = form.cleaned_data
             post_url = request.build_absolute_url(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read {post.title}"
-            
+            sent = True
     else:
         form = EmailPostForm()
     return render(request, 'blog/post/share.html', {'post':post,
-                                                    'form': form})
+                                                    'form': form,
+                                                    'sent':sent})
 
 
 # def post_list(request):
